@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <link href="stylesheets/bootstrap.min.css" rel="stylesheet" />
-    <link href="stylesheets/css.css" rel="stylesheet" />    
-    <title><%= title %></title>
+    <link href="stylesheets/css.css" rel="stylesheet" />
+    <title>
+        <%= title %>
+    </title>
 </head>
+
 <body>
     <div class="container">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Dashboard</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -24,7 +29,8 @@
                         <a class="nav-link" href="new">Novo</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                             Relatórios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -43,19 +49,26 @@
         </div>
 
         <!-- CARD -->
+        <% report.forEach(function(reportsystemdb){ %>
+        <!--Loop para cada dado salvo no banco-->
         <div class="row" id="rowCard">
-            <div class="col col-md-3 col-sm-12">
+            <div class="col col-12">
                 <div class="card">
-                  <div class="card-body">
-                      <div class="reportEnvelope"></div>
-                  </div>
                     <div class="card-body">
-                        <h5 class="card-title" id="cardTitle">Card title</h5>
-                        <p class="card-text" id="cardText">Um resumo do último relatório será apresentado aqui. Provavelmente as primeiras 100 palavras ou algo parecido.</p>
+                        <div class="reportEnvelope"></div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="cardTitle">
+                            <%= reportsystemdb.date %>
+                        </h5>
+                        <p class="card-text" id="cardText">Um resumo do último relatório .</p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">15 de janeiro de 2019</li>
-                        <li class="list-group-item">Daniel Gomes Pereira</li>
+                        <li class="list-group-item">
+                            <%= reportsystemdb.shift %>º Turno</li>
+                        <li class="list-group-item">
+                            <%= reportsystemdb.operatorName %>
+                        </li>
                     </ul>
                     <div class="card-body">
                         <a href="#" class="card-link">Completo</a>
@@ -63,72 +76,14 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col col-md-3 col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="reportEnvelope"></div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title" id="cardTitle">Card title</h5>
-                        <p class="card-text" id="cardText">Um resumo do último relatório será apresentado aqui. Provavelmente as primeiras 100 palavras ou algo parecido.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">15 de janeiro de 2019</li>
-                        <li class="list-group-item">Daniel Gomes Pereira</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Completo</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col col-md-3 col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="reportEnvelope"></div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title" id="cardTitle">Card title</h5>
-                        <p class="card-text" id="cardText">Um resumo do último relatório será apresentado aqui. Provavelmente as primeiras 100 palavras ou algo parecido.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">15 de janeiro de 2019</li>
-                        <li class="list-group-item">Daniel Gomes Pereira</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Completo</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col col-md-3 col-sm-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="reportEnvelope"></div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title" id="cardTitle">Card title</h5>
-                        <p class="card-text" id="cardText">Um resumo do último relatório será apresentado aqui. Provavelmente as primeiras 100 palavras ou algo parecido.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">15 de janeiro de 2019</li>
-                        <li class="list-group-item">Daniel Gomes Pereira</li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Completo</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
-            </div>  
-
         </div>
+        <%  }) %>
+
     </div>
 
-<!--Scripts-->
-<script src="javascripts/jquery-3.3.1.min.js"></script>
-<script src="javascripts/bootstrap.min.js"></script>
+    <!--Scripts-->
+    <script src="javascripts/jquery-3.3.1.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
 </body>
+
 </html>

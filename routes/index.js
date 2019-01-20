@@ -3,7 +3,10 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Report System'});
+  require('../db').findReport(function(docs){
+    res.render('index', { title: 'Report System' , report: docs});  //objeto report recebe os dados de docs
+  })
+  
 });
 
 /* GET new page. */

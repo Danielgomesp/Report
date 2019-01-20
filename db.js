@@ -1,3 +1,4 @@
+//CONNECTION
 var mongoClient = require("mongodb").MongoClient;
 mongoClient.connect("mongodb://danielgomesp:daniel32768600@kamino.mongodb.umbler.com:36898/reportsystemdb",
  function(err, conn){
@@ -13,4 +14,11 @@ function saveReport(operatorName, shift, date, report, callback){
 
 }
 
-module.exports = {saveReport}
+function findReport(callback){
+    global.db.collection("reportsystemdb").find().toArray(function(err, docs){
+        if(err) return console.log(err);
+        callback(docs);
+    })
+}
+
+module.exports = {saveReport, findReport}
