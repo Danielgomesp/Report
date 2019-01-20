@@ -49,10 +49,10 @@
         </div>
 
         <!-- CARD -->
-        <% report.forEach(function(reportsystemdb){ %>
-        <!--Loop para cada dado salvo no banco-->
         <div class="row" id="rowCard">
-            <div class="col col-12">
+            <% report.forEach(function(reportsystemdb){ %>
+            <!--Loop para cada dado salvo no banco-->
+            <div class="col col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                 <div class="card">
                     <div class="card-body">
                         <div class="reportEnvelope"></div>
@@ -76,9 +76,8 @@
                     </div>
                 </div>
             </div>
+            <%  }) %>
         </div>
-        <%  }) %>
-
     </div>
 
     <!--Scripts-->
