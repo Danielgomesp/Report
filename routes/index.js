@@ -10,5 +10,17 @@ router.get('/', function(req, res, next) {
 router.get('/new', function(req, res, next) {
   res.render('new', { title: 'Create New Report'});
 });
+
+/* POST new page. */
+router.post('/new', function(req, res, next) {
+  var operatorName = req.body.operatorName;
+  var shift = req.body.shift;
+  var date = req.body.date;
+  var report = req.body.report;
+  require("../db").saveReport(operatorName, shift, date, report, 
+    function(){
+    res.redirect('/');
+  })
+});
+
 module.exports = router;
- 
