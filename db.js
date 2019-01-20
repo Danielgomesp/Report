@@ -15,7 +15,7 @@ function saveReport(operatorName, shift, date, report, callback){
 }
 
 function findReport(callback){
-    global.db.collection("reportsystemdb").find().toArray(function(err, docs){
+    global.db.collection("reportsystemdb").find().sort({date: -1}).toArray(function(err, docs){
         if(err) return console.log(err);
         callback(docs);
     })
