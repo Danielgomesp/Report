@@ -52,17 +52,21 @@
         <!-- CARD -->
         <div class="row" id="rowCard">
             <% report.forEach(function(reportsystemdb){ %>
-            <!--Loop para cada dado salvo no banco-->
+            <!--English:    Loop to each data saved to the bank-->
+            <!--Portuguese: Loop para cada dado salvo no banco-->
             <div class="col col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                 <div class="card">
                     <div class="card-body">
-                        <div class="reportEnvelope"><h4></h4></div>
+                        <div class="reportEnvelope">
+                            <h4></h4>
+                        </div>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title" id="cardTitle">
                             <%= reportsystemdb.date %>
                         </h5>
-                        <p class="card-text" id="cardText"> <%= reportsystemdb.report %>.</p>
+                        <p class="card-text" id="cardText">
+                            <%= reportsystemdb.report %>.</p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
