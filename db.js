@@ -21,4 +21,11 @@ function findReport(callback){
     })
 }
 
-module.exports = {saveReport, findReport}
+function completeReport(idReport, callback){
+    let idReport;
+    global.db.collection("reportsystemdb").find(idReport).sort({date: -1}).toArray(function(err, docs){
+        if(err) return console.log(err);
+        callback(docs);
+    })
+}
+module.exports = {saveReport, findReport, completeReport}
