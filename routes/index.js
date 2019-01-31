@@ -14,6 +14,13 @@ router.get('/new', function(req, res, next) {
   res.render('new', { title: 'Create New Report'});
 });
 
+
+/* GET complete page. */
+router.get('/complete', function(req, res, next) {
+  res.render('complete', { title: 'Complete Report'});
+});
+
+
 /* POST new page. */
 router.post('/new', function(req, res, next) {
   var operatorName = req.body.operatorName;
