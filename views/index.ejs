@@ -55,31 +55,38 @@
             <!--English:    Loop to each data saved to the bank-->
             <!--Portuguese: Loop para cada dado salvo no banco-->
             <div class="col col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="reportEnvelope">
-                            <h4></h4>
+                <form action="/complete" method="post">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="reportEnvelope">
+                                <h4></h4>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" id="cardTitle">
+                                <%= reportsystemdb.date %>
+                            </h5>
+                            <p class="card-text">
+                                <%= reportsystemdb.report %>.</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <%= reportsystemdb.shift %>º Turno</li>
+                            <li class="list-group-item">
+                                <%= reportsystemdb.operatorName %>
+                            </li>
+                        </ul>
+                        <input type="hidden" name="report" id="report" value="<%= reportsystemdb.report %>">
+                        <input type="hidden" name="date" id="date" value="<%= reportsystemdb.date %>">
+                        <input type="hidden" name="shift" id="shift" value="<%= reportsystemdb.shift %>">
+                        <input type="hidden" name="operatorName" id="operatorName" value="<%= reportsystemdb.operatorName %>">
+                        <div class="card-body">
+
+                            <button type="submit" class="btn btn-info" onclick="">Relatório Completo</button>
+
                         </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title" id="cardTitle">
-                            <%= reportsystemdb.date %>
-                        </h5>
-                        <p class="card-text" id="cardText">
-                            <%= reportsystemdb.report %>.</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            <%= reportsystemdb.shift %>º Turno</li>
-                        <li class="list-group-item">
-                            <%= reportsystemdb.operatorName %>
-                        </li>
-                    </ul>
-                    <div class="card-body">
-                        <a href="#" class="card-link">Completo</a>
-                        <a href="#" class="card-link">Another link</a>
-                    </div>
-                </div>
+                </form>
             </div>
             <%  }) %>
         </div>
