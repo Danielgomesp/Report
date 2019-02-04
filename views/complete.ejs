@@ -46,53 +46,50 @@
         </nav>
 
         <br>
+        <form action="/complete/update" method="post">
+            <div class="row">
 
-        <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <label>Data: </label>
+                    <label class="form-control">
+                        <%= date %></label>
+                </div>
 
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <label>Data: </label>
-                <label class="form-control">
-                    <%= date %></label>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <label>Nome: </label>
+                    <label class="form-control">
+                        <%= operatorName %></label>
+                </div>
+
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <label>Turno: </label>
+                    <label class="form-control">
+                        <%= shift %></label>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label for="textarea" class="control-label">Relatório: </label>
+                    <textarea name="newReport" id="newReport" class="form-control" rows="3" required="required"><%= report %></textarea>
+                </div>
+
             </div>
+            <br>
+            <div class="row">
 
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <label>Nome: </label>
-                <label class="form-control">
-                    <%= operatorName %></label>
-            </div>
-
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <label>Turno: </label>
-                <label class="form-control">
-                    <%= shift %></label>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <label for="textarea" class="control-label">Relatório: </label>
-                <textarea name="" id="textarea" class="form-control" rows="3" required="required"><%= report %></textarea>
-            </div>
-
-        </div>
-        <br>
-        <div class="row">
-
-            <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
-                <form action="/complete/update" method="post">
+                <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
                     <input type="hidden" name="id" id="id" value="<%= id %>">
-                    <input type="hidden" name="report" id="report" value="<%= report %>">
                     <button type="submit" class="btn btn-success" id="btnUpdate" name="btnUpdate">Atualizar</button>
-                </form>
-            </div>
+                </div>
 
-            <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
-                <form action="/complete/delete" method="post">
-                    <input type="hidden" name="id" id="id" value="<%= id %>">
-                    <button type="submit" class="btn btn-danger" id="btnDelete" name="btnDelete">Deletar</button>
-                </form>
-            </div>
+        </form>
 
-
+        <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
+            <form action="/complete/delete" method="post">
+                <input type="hidden" name="id" id="id" value="<%= id %>">
+                <button type="submit" class="btn btn-danger" id="btnDelete" name="btnDelete">Deletar</button>
+            </form>
         </div>
+
 
     </div>
     <!--container-->

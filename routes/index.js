@@ -37,8 +37,8 @@ router.post('/complete/delete', function (req, res, next) {
 /* POST complete/update page. */
 router.post('/complete/update', function (req, res, next) {
   let id = req.body.id;
-  let report = req.body.report;
-  require('../db').updateReport(id,
+  let newReport = req.body.newReport;
+  require('../db').updateReport(id, newReport, 
     function () {
       res.redirect('/');
     });

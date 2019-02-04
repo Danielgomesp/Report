@@ -24,22 +24,23 @@ function findReport(callback) {
 
 function deleteReport(id, callback) {
     let ObjectId = require('mongodb').ObjectID;
-    global.db.collection("reportsystemdb").deleteOne({ _id: ObjectId(id)} , function (err, result){
-        if(err) return console.log(err);
+    global.db.collection("reportsystemdb").deleteOne({ _id: ObjectId(id) }, function (err, result) {
+        if (err) return console.log(err);
         callback();
     })
-    
+
 }
 
-function updateReport(id, callback) {
+function updateReport(id, newReport, callback) {
     let ObjectId = require('mongodb').ObjectID;
-    global.db.collection("reportsystemdb").updateOne({ _id: ObjectId(id)} , function (){
-        $set:{
-            report: report
-        }        
+    global.db.collection("reportsystemdb").updateOne({ _id: ObjectId(id)}, {
+        $set: {
+            report : newReport
+        }
+    }, function (err, result) {
+        if (err) return console.log(err);
         callback();
     })
-    
 }
 
 module.exports = { saveReport, findReport, deleteReport, updateReport }
