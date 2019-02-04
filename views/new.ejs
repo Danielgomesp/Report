@@ -1,78 +1,86 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="stylesheets/bootstrap.min.css" rel="stylesheet" />
-    <link href="stylesheets/css.css" rel="stylesheet" />    
-    <title><%= title %></title>
+    <link href="stylesheets/css.css" rel="stylesheet" />
+    <title>
+        <%= title %>
+    </title>
 </head>
+
 <body>
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Dashboard</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="new">Novo</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Relatórios
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Buscar Outro Registro</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="new">Novo</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Relatórios
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Buscar Outro Registro</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="jumbotron">
+            <h1>Cadastrar Novo Registro</h1>
         </div>
-    </nav>
 
-    <div class="jumbotron">
-        <h1>Cadastrar Novo Registro</h1>
+        <!-- FORM -->
+        <form action="/new" method="post">
+            <div class="form-group">
+                <label>Nome do operador</label>
+                <input type="text" class="form-control" id="operatorName" name="operatorName" placeholder="Escreva o seu nome aqui">
+            </div>
+            <div class="form-group">
+                <label>Turno</label>
+                <select class="form-control" id="shift" name="shift">
+                    <option value="1">1º</option>
+                    <option value="2">2º</option>
+                    <option value="3">3º</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Data</label>
+                <input id="date" name="date" type="date" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Relatório</label>
+                <textarea class="form-control" id="report" name="report" rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-lg" id="btn-send" onclick="">Enviar</button>
+            </div>
+        </form>
+
     </div>
+    <!--container-->
 
-    <!-- FORM -->
-    <form action="/new" method="post">
-        <div class="form-group">
-            <label>Nome do operador</label>
-            <input type="text" class="form-control" id="operatorName" name="operatorName" placeholder="Escreva o seu nome aqui">
-        </div>
-        <div class="form-group">
-            <label>Turno</label>
-            <select class="form-control" id="shift" name="shift">
-                <option value="1">1º</option>
-                <option value="2">2º</option>
-                <option value="3">3º</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Data</label>
-          <input id="date" name="date" type="date" />
-        </div>
-        <div class="form-group">
-            <label>Relatório</label>
-            <textarea class="form-control" id="report" name="report" rows="10"></textarea>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg" id="btn-send" onclick="">Enviar</button>
-        </div>
-    </form>
-
-</div> <!--container-->
-
-<!--Scripts-->
-<script src="javascripts/jquery-3.3.1.min.js"></script>
-<script src="javascripts/bootstrap.min.js"></script>
+    <!--Scripts-->
+    <script src="javascripts/jquery-3.3.1.min.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
 </body>
+
 </html>
