@@ -31,4 +31,15 @@ function deleteReport(id, callback) {
     
 }
 
-module.exports = { saveReport, findReport, deleteReport }
+function updateReport(id, callback) {
+    let ObjectId = require('mongodb').ObjectID;
+    global.db.collection("reportsystemdb").updateOne({ _id: ObjectId(id)} , function (){
+        $set:{
+            report: report
+        }        
+        callback();
+    })
+    
+}
+
+module.exports = { saveReport, findReport, deleteReport, updateReport }

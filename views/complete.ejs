@@ -77,14 +77,16 @@
         <div class="row">
 
             <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
-
-                <button type="button" class="btn btn-success" id="btnUpdate" name="btnUpdate">Atualizar</button>
-
+                <form action="/complete/update" method="post">
+                    <input type="hidden" name="id" id="id" value="<%= id %>">
+                    <input type="hidden" name="report" id="report" value="<%= report %>">
+                    <button type="submit" class="btn btn-success" id="btnUpdate" name="btnUpdate">Atualizar</button>
+                </form>
             </div>
 
             <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
                 <form action="/complete/delete" method="post">
-                    <input type="hidden" name="id" id="id" value="<%= id %>"> 
+                    <input type="hidden" name="id" id="id" value="<%= id %>">
                     <button type="submit" class="btn btn-danger" id="btnDelete" name="btnDelete">Deletar</button>
                 </form>
             </div>
