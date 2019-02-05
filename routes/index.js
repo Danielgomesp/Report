@@ -49,7 +49,7 @@ router.post('/complete/update', function (req, res, next) {
 router.post('/new', function (req, res, next) {
   var operatorName = req.body.operatorName;
   var shift = req.body.shift;
-  var d = req.body.date;
+  var date = req.body.date;
   var report = req.body.report;
   require("../db").saveReport(operatorName, shift, date, report,
     function () {
