@@ -67,23 +67,27 @@
             <div class="col col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
                 <form action="/complete" method="post">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="reportEnvelope">
-                                <h4></h4>
-                            </div>
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="navResume<%= reportsystemdb._id %>" onclick="activeTabResume('<%= reportsystemdb._id %>', '<%= reportsystemdb.operatorName %>', '<%= reportsystemdb.shift %>');">Resumo</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="navText<%= reportsystemdb._id %>" onclick="activeTabReport('<%= reportsystemdb._id %>', '<%= reportsystemdb.report %>');">Texto</a>
+                                </li>
+                            </ul>
                         </div>
                         <div class="card-body">
                             <h5 class="card-title" id="cardTitle">
                                 <%= reportsystemdb.date %>
                             </h5>
                         </div>
-                        <ul class="list-group list-group-flush">
+                        <ul class="list-group list-group-flush" id="<%= reportsystemdb._id %>">
                             <li class="list-group-item">
                                 <%= reportsystemdb.shift %>º Turno</li>
                             <li class="list-group-item">
                                 <%= reportsystemdb.operatorName %>
                             </li>
-                        
                         </ul>
                         <input type="hidden" name="id" id="id" value="<%= reportsystemdb._id %>">
                         <input type="hidden" name="report" id="report" value="<%= reportsystemdb.report %>">
@@ -95,7 +99,8 @@
                             <button type="submit" class="btn btn-info" onclick="">Relatório Completo</button>
 
                         </div>
-                    </div> <br>
+                    </div>
+                    <br>
                 </form>
             </div>
             <%  }) %>
@@ -105,6 +110,7 @@
     <!--Scripts-->
     <script src="javascripts/jquery-3.3.1.min.js"></script>
     <script src="javascripts/bootstrap.min.js"></script>
+    <script src="javascripts/scripts.js"></script>
 </body>
 
 </html>

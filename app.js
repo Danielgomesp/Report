@@ -40,37 +40,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-
-////My codes!
-
-class Report {
-  constructor(name, shift, date, report) {
-      this.name = name;
-      this.shift = shift;
-      this.date = date;
-      this.report = report;
-  }
-}
-
-class ReportManager {
-  constructor() {
-      this.reportlist = [];
-  }
-
-  add(report) {
-
-  }
-
-  update(report) {
-
-  }
-
-  delete(report) {
-
-  }
-
-  read(report) {
-
-  }
-}
