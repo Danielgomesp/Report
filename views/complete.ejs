@@ -84,9 +84,16 @@
         </form>
 
         <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
-            <form action="/complete/delete" method="post">
+            <form action="/complete/delete" id="frmDelete" method="post">
                 <input type="hidden" name="id" id="id" value="<%= id %>">
-                <button type="submit" class="btn btn-danger" id="btnDelete" name="btnDelete">Deletar</button>
+                <button type="button" class="btn btn-danger" id="btnDelete" name="btnDelete" onclick="alertDelete();">Deletar</button>
+                <script>
+                    function alertDelete() {
+                        if (confirm('Deseja apagar o relatório?')) {
+                            document.getElementById('frmDelete').submit();
+                        } else { }
+                    }
+                </script>
             </form>
         </div>
 
