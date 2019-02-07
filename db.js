@@ -21,6 +21,14 @@ function findReport(callback) {
     })
 }
 
+function searchReport(id, callback) {
+    let ObjectId = require('mongodb').ObjectID;
+    global.db.collection("reportsystemdb").findOne({ _id: ObjectId(id) }, function (err, result) {
+        if (err) return console.log(err);
+        callback(result);
+    })
+}
+
 
 function deleteReport(id, callback) {
     let ObjectId = require('mongodb').ObjectID;
@@ -33,9 +41,9 @@ function deleteReport(id, callback) {
 
 function updateReport(id, newReport, callback) {
     let ObjectId = require('mongodb').ObjectID;
-    global.db.collection("reportsystemdb").updateOne({ _id: ObjectId(id)}, {
+    global.db.collection("reportsystemdb").updateOne({ _id: ObjectId(id) }, {
         $set: {
-            report : newReport
+            report: newReport
         }
     }, function (err, result) {
         if (err) return console.log(err);
@@ -43,4 +51,4 @@ function updateReport(id, newReport, callback) {
     })
 }
 
-module.exports = { saveReport, findReport, deleteReport, updateReport }
+module.exports = { saveReport, findReport, deleteReport, updateReport, searchReport }

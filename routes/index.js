@@ -11,18 +11,17 @@ router.get('/', function (req, res, next) {
 
 /* GET new page. */
 router.get('/new', function (req, res, next) {
-  res.render('new', { title: 'Create New Report' });
+  res.render('new', { title: 'Criar Novo Relatório' });
 });
 
 
 /* POST complete page. */
 router.post('/complete', function (req, res, next) {
-  let report = req.body.report;
-  let operatorName = req.body.operatorName;
-  let shift = req.body.shift;
-  let date = req.body.date;
   let id = req.body.id;
-  res.render('complete', { title: 'Complete Report', report: report, operatorName: operatorName, shift: shift, date: date, id: id });
+  require('../db').searchReport(id, function (result) {
+    res.render('complete', { title: 'Relatório Completo', report: result });
+  })
+
 });
 
 /* POST complete/delete page. */
@@ -38,7 +37,7 @@ router.post('/complete/delete', function (req, res, next) {
 router.post('/complete/update', function (req, res, next) {
   let id = req.body.id;
   let newReport = req.body.newReport;
-  require('../db').updateReport(id, newReport, 
+  require('../db').updateReport(id, newReport,
     function () {
       res.redirect('/');
     });

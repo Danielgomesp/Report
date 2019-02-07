@@ -52,24 +52,24 @@
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                     <label>Data: </label>
                     <label class="form-control">
-                        <%= date %></label>
+                        <%= report.date %></label>
                 </div>
 
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                     <label>Nome: </label>
                     <label class="form-control">
-                        <%= operatorName %></label>
+                         <%= report.operatorName %></label>
                 </div>
 
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                     <label>Turno: </label>
                     <label class="form-control">
-                        <%= shift %></label>
+                        <%= report.shift %></label>
                 </div>
             
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <label for="textarea" class="control-label">Relatório: </label>
-                    <textarea name="newReport" id="newReport" class="form-control" rows="15" required="required"><%= report %></textarea>
+                    <textarea name="newReport" id="newReport" class="form-control" rows="15" required="required"><%= report.report %></textarea>
                 </div>
 
             </div>
@@ -78,14 +78,14 @@
 
             <div class="row">
                 <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
-                    <input type="hidden" name="id" id="id" value="<%= id %>">
+                    <input type="hidden" name="id" id="id" value="<%= report.id %>">
                     <button type="submit" class="btn btn-success" id="btnUpdate" name="btnUpdate">Atualizar</button>
                 </div>
         </form>
 
         <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
             <form action="/complete/delete" id="frmDelete" method="post">
-                <input type="hidden" name="id" id="id" value="<%= id %>">
+                <input type="hidden" name="id" id="id" value="<%= report.id %>">
                 <button type="button" class="btn btn-danger" id="btnDelete" name="btnDelete" onclick="alertDelete();">Deletar</button>
                 <script>
                     function alertDelete() {
