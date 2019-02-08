@@ -30,8 +30,8 @@
                         <a class="nav-link" href="new">Novo</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Relatórios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -52,8 +52,9 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <form action="#" class="search-form" role="search">
-                    <input class="form-control" type="text" placeholder="Busque por nome, turno, data ou trecho do relatório"
-                        id="search" name="search" autocomplete="on" autofocus="">
+                    <input class="form-control" type="text"
+                        placeholder="Busque por nome, turno, data ou trecho do relatório" id="search" name="search"
+                        autocomplete="on" autofocus="">
                 </form>
             </div>
         </div>
@@ -65,15 +66,17 @@
             <!--English:    Loop to each data saved to the bank-->
             <!--Portuguese: Loop para cada dado salvo no banco-->
             <div class="col col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                <form action="/complete" method="post">
-                    <div class="card">
+                <div class="card">
+                    <form action="/complete" method="post">
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="navResume<%= reportsystemdb._id %>" onclick="activeTabResume('<%= reportsystemdb._id %>', '<%= reportsystemdb.operatorName %>', '<%= reportsystemdb.shift %>');">Resumo</a>
+                                    <a class="nav-link active" id="navResume<%= reportsystemdb._id %>"
+                                        onclick="activeTabResume('<%= reportsystemdb._id %>', '<%= reportsystemdb.operatorName %>', '<%= reportsystemdb.shift %>');">Resumo</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="navText<%= reportsystemdb._id %>" onclick="activeTabReport('<%= reportsystemdb._id %>', '<%= reportsystemdb.report %>');">Texto</a>
+                                    <a class="nav-link" id="navText<%= reportsystemdb._id %>"
+                                        onclick="activeTabReport('<%= reportsystemdb._id %>', '<%= reportsystemdb.report %>');">Texto</a>
                                 </li>
                             </ul>
                         </div>
@@ -88,6 +91,9 @@
                             <li class="list-group-item">
                                 <%= reportsystemdb.operatorName %>
                             </li>
+                            <li class="list-group-item" hidden="true">
+                                <%= reportsystemdb.report %>
+                            </li>
                         </ul>
                         <input type="hidden" name="id" id="id" value="<%= reportsystemdb._id %>">
                         <div class="card-body">
@@ -95,9 +101,11 @@
                             <button type="submit" class="btn btn-info" onclick="">Relatório Completo</button>
 
                         </div>
-                    </div>
-                    <br>
-                </form>
+                    </form>
+                </div>
+
+                <br>
+
             </div>
             <%  }) %>
         </div>
