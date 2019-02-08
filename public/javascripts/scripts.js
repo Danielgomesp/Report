@@ -1,13 +1,16 @@
 //Control tab of the cards
-function activeTabReport(id, report) {
-    document.getElementById(id).innerHTML = "<li class='list-group-item'>" + report + "</li> ";
+function activeTabReport(id) {
+    document.getElementById('operatorName' + id).setAttribute("hidden", "true")
+    document.getElementById('shift' + id).setAttribute("hidden", "true")
+    document.getElementById('report' + id).removeAttribute("hidden")
     document.getElementById('navResume' + id).classList.remove('active');
     document.getElementById('navText' + id).classList.add('active');
 }
 
-function activeTabResume(id, operatorName, shift) {
-    document.getElementById(id).innerHTML = "<li class='list-group-item'>" + shift + "º Turno" + "</li> ";
-    document.getElementById(id).innerHTML += "<li class='list-group-item'>" + operatorName + "</li> ";
+function activeTabResume(id) {
+    document.getElementById('operatorName' + id).removeAttribute("hidden")
+    document.getElementById('shift' + id).removeAttribute("hidden")
+    document.getElementById('report' + id).setAttribute("hidden", "true")
     document.getElementById('navResume' + id).classList.add('active');
     document.getElementById('navText' + id).classList.remove('active');
 }

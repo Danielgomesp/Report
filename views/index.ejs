@@ -72,26 +72,26 @@
                             <ul class="nav nav-tabs card-header-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="navResume<%= reportsystemdb._id %>"
-                                        onclick="activeTabResume('<%= reportsystemdb._id %>', '<%= reportsystemdb.operatorName %>', '<%= reportsystemdb.shift %>');">Resumo</a>
+                                        onclick="activeTabResume('<%= reportsystemdb._id %>');">Resumo</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" id="navText<%= reportsystemdb._id %>"
-                                        onclick="activeTabReport('<%= reportsystemdb._id %>', '<%= reportsystemdb.report %>');">Texto</a>
+                                        onclick="activeTabReport('<%= reportsystemdb._id %>');">Texto</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title" id="cardTitle">
+                            <h5 class="card-title" id="cardTitle<%= reportsystemdb._id %>">
                                 <%= reportsystemdb.date %>
                             </h5>
                         </div>
                         <ul class="list-group list-group-flush" id="<%= reportsystemdb._id %>">
-                            <li class="list-group-item">
+                            <li class="list-group-item" id="shift<%= reportsystemdb._id %>">
                                 <%= reportsystemdb.shift %>º Turno</li>
-                            <li class="list-group-item">
+                            <li class="list-group-item" id="operatorName<%= reportsystemdb._id %>">
                                 <%= reportsystemdb.operatorName %>
                             </li>
-                            <li class="list-group-item" hidden="true">
+                            <li class="list-group-item" hidden="true" id="report<%= reportsystemdb._id %>">
                                 <%= reportsystemdb.report %>
                             </li>
                         </ul>
