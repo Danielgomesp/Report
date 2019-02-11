@@ -1,4 +1,6 @@
 //CONNECTION
+let selectCollection = 'report';
+
 var mongoClient = require("mongodb").MongoClient;
 mongoClient.connect("mongodb://danielgomesp:daniel32768600@kamino.mongodb.umbler.com:36898/reportsystemdb",
     function (err, conn) {
@@ -7,7 +9,7 @@ mongoClient.connect("mongodb://danielgomesp:daniel32768600@kamino.mongodb.umbler
     })
 
 function saveReport(operatorName, shift, date, report, callback) {
-    global.db.collection("reportsystemdb").insert({ operatorName, shift, date, report }, function (err, result) {
+    global.db.collection(selectCollection).insert({ operatorName, shift, date, report }, function (err, result) {
         if (err) return console.log(err);
         callback();
     })
@@ -15,7 +17,7 @@ function saveReport(operatorName, shift, date, report, callback) {
 }
 
 function findReport(callback) {
-    global.db.collection("reportsystemdb").find().sort({ date: -1 }).toArray(function (err, docs) {
+    global.db.collection(selectCollection).find().sort({ date: -1 }).toArray(function (err, docs) {
         if (err) return console.log(err);
         callback(docs);
     })
@@ -23,7 +25,7 @@ function findReport(callback) {
 
 function searchReport(id, callback) {
     let ObjectId = require('mongodb').ObjectID;
-    global.db.collection("reportsystemdb").findOne({ _id: ObjectId(id) }, function (err, result) {
+    global.db.collection(selectCollection).findOne({ _id: ObjectId(id) }, function (err, result) {
         if (err) return console.log(err);
         callback(result);
     })
@@ -32,7 +34,7 @@ function searchReport(id, callback) {
 
 function deleteReport(id, callback) {
     let ObjectId = require('mongodb').ObjectID;
-    global.db.collection("reportsystemdb").deleteOne({ _id: ObjectId(id) }, function (err, result) {
+    global.db.collection(selectCollection).deleteOne({ _id: ObjectId(id) }, function (err, result) {
         if (err) return console.log(err);
         callback();
     })
@@ -41,7 +43,7 @@ function deleteReport(id, callback) {
 
 function updateReport(id, newReport, callback) {
     let ObjectId = require('mongodb').ObjectID;
-    global.db.collection("reportsystemdb").updateOne({ _id: ObjectId(id) }, {
+    global.db.collection(selectCollection).updateOne({ _id: ObjectId(id) }, {
         $set: {
             report: newReport
         }
