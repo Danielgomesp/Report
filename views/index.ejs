@@ -1,100 +1,63 @@
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/dashboard">Dashboard</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<div class="jumbotron">
+    <h1>Registro de Ocorrências</h1>
+</div>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/dashboard">Inicio <span class="sr-only">(current)</span></a>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <form action="#" class="search-form" role="search">
+            <input class="form-control" type="text" placeholder="Busque por nome, turno, data ou trecho do relatório"
+                id="search" name="search" autocomplete="on" autofocus="">
+        </form>
+    </div>
+</div>
+<br>
+
+<!-- CARD -->
+<div class="row" id="rowCard">
+    <% report.forEach(function(reportsystemdb){ %>
+    <!--English:    Loop to each data saved to the bank-->
+    <!--Portuguese: Loop para cada dado salvo no banco-->
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
+        <div class="card">
+            <form action="/complete" method="post">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="navResume<%= reportsystemdb._id %>"
+                                onclick="activeTabResume('<%= reportsystemdb._id %>');">Resumo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="navText<%= reportsystemdb._id %>"
+                                onclick="activeTabReport('<%= reportsystemdb._id %>');">Texto</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" id="cardTitle<%= reportsystemdb._id %>">
+                        <%= reportsystemdb.date %>
+                    </h5>
+                </div>
+                <ul class="list-group list-group-flush" id="<%= reportsystemdb._id %>">
+                    <li class="list-group-item" id="shift<%= reportsystemdb._id %>">
+                        <%= reportsystemdb.shift %>º Turno</li>
+                    <li class="list-group-item" id="operatorName<%= reportsystemdb._id %>">
+                        <%= reportsystemdb.operatorName %>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="new">Novo</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Relatórios
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Buscar Outro Registro</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                            <a href="/users/logout" class="nav-link" href="new">Sair</a>
+                    <li class="list-group-item" hidden="true" id="report<%= reportsystemdb._id %>">
+                        <%= reportsystemdb.report %>
                     </li>
                 </ul>
-            </div>
-        </nav>
+                <input type="hidden" name="id" id="id" value="<%= reportsystemdb._id %>">
+                <div class="card-body">
 
-        <div class="jumbotron">
-            <h1>Registro de Ocorrências</h1>
+                    <button type="submit" class="btn btn-info" onclick="">Relatório Completo</button>
+
+                </div>
+            </form>
         </div>
 
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <form action="#" class="search-form" role="search">
-                    <input class="form-control" type="text"
-                        placeholder="Busque por nome, turno, data ou trecho do relatório" id="search" name="search"
-                        autocomplete="on" autofocus="">
-                </form>
-            </div>
-        </div>
         <br>
 
-        <!-- CARD -->
-        <div class="row" id="rowCard">
-            <% report.forEach(function(reportsystemdb){ %>
-            <!--English:    Loop to each data saved to the bank-->
-            <!--Portuguese: Loop para cada dado salvo no banco-->
-            <div class="col col-12 col-sm-12 col-md-6 col-lg-3 col-xl-3">
-                <div class="card">
-                    <form action="/complete" method="post">
-                        <div class="card-header">
-                            <ul class="nav nav-tabs card-header-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="navResume<%= reportsystemdb._id %>"
-                                        onclick="activeTabResume('<%= reportsystemdb._id %>');">Resumo</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="navText<%= reportsystemdb._id %>"
-                                        onclick="activeTabReport('<%= reportsystemdb._id %>');">Texto</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" id="cardTitle<%= reportsystemdb._id %>">
-                                <%= reportsystemdb.date %>
-                            </h5>
-                        </div>
-                        <ul class="list-group list-group-flush" id="<%= reportsystemdb._id %>">
-                            <li class="list-group-item" id="shift<%= reportsystemdb._id %>">
-                                <%= reportsystemdb.shift %>º Turno</li>
-                            <li class="list-group-item" id="operatorName<%= reportsystemdb._id %>">
-                                <%= reportsystemdb.operatorName %>
-                            </li>
-                            <li class="list-group-item" hidden="true" id="report<%= reportsystemdb._id %>">
-                                <%= reportsystemdb.report %>
-                            </li>
-                        </ul>
-                        <input type="hidden" name="id" id="id" value="<%= reportsystemdb._id %>">
-                        <div class="card-body">
-
-                            <button type="submit" class="btn btn-info" onclick="">Relatório Completo</button>
-
-                        </div>
-                    </form>
-                </div>
-
-                <br>
-
-            </div>
-            <%  }) %>
-        </div>
     </div>
+    <%  }) %>
+</div>
