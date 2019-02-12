@@ -1,108 +1,54 @@
-<!DOCTYPE html>
-<html>
+<br>
+<form action="/complete/update" method="post">
+    <div class="row">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="stylesheets/bootstrap.min.css" rel="stylesheet" />
-    <link href="stylesheets/css.css" rel="stylesheet" />
-    <title>
-        <%= title %>
-    </title>
-</head>
-
-<body>
-    <div class="container">
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">Dashboard</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="new">Novo</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Relatórios
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Buscar Outro Registro</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <br>
-        <form action="/complete/update" method="post">
-            <div class="row">
-
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <label>Data: </label>
-                    <label class="form-control">
-                        <%= report.date %></label>
-                </div>
-
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <label>Nome: </label>
-                    <label class="form-control">
-                         <%= report.operatorName %></label>
-                </div>
-
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                    <label>Turno: </label>
-                    <label class="form-control">
-                        <%= report.shift %></label>
-                </div>
-            
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <label for="textarea" class="control-label">Relatório: </label>
-                    <textarea name="newReport" id="newReport" class="form-control" rows="15" required="required"><%= report.report %></textarea>
-                </div>
-
-            </div>
-
-            <br>
-
-            <div class="row">
-                <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
-                    <input type="hidden" name="id" id="id" value="<%= report._id %>">
-                    <button type="submit" class="btn btn-success" id="btnUpdate" name="btnUpdate">Atualizar</button>
-                </div>
-        </form>
-
-        <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
-            <form action="/complete/delete" id="frmDelete" method="post">
-                <input type="hidden" name="id" id="id" value="<%= report._id %>">
-                <button type="button" class="btn btn-danger" id="btnDelete" name="btnDelete" onclick="alertDelete();">Deletar</button>
-                <script>
-                    function alertDelete() {
-                        if (confirm('Deseja apagar o relatório?')) {
-                            document.getElementById('frmDelete').submit();
-                        } else { }
-                    }
-                </script>
-            </form>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <label>Data: </label>
+            <label class="form-control">
+                <%= report.date %></label>
         </div>
 
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <label>Nome: </label>
+            <label class="form-control">
+                <%= report.operatorName %></label>
+        </div>
+
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <label>Turno: </label>
+            <label class="form-control">
+                <%= report.shift %></label>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <label for="textarea" class="control-label">Relatório: </label>
+            <textarea name="newReport" id="newReport" class="form-control" rows="15"
+                required="required"><%= report.report %></textarea>
+        </div>
 
     </div>
-    <!--container-->
-    <!--Scripts-->
-    <script src="javascripts/jquery-3.3.1.min.js"></script>
-    <script src="javascripts/bootstrap.min.js"></script>
-</body>
 
-</html>
+    <br>
+
+    <div class="row">
+        <div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
+            <input type="hidden" name="id" id="id" value="<%= report._id %>">
+            <button type="submit" class="btn btn-success" id="btnUpdate" name="btnUpdate">Atualizar</button>
+        </div>
+</form>
+
+<div class="col-6 col-xs-6 col-sm-6 col-md-3 col-lg-2">
+    <form action="/complete/delete" id="frmDelete" method="post">
+        <input type="hidden" name="id" id="id" value="<%= report._id %>">
+        <button type="button" class="btn btn-danger" id="btnDelete" name="btnDelete"
+            onclick="alertDelete();">Deletar</button>
+        <script>
+            function alertDelete() {
+                if (confirm('Deseja apagar o relatório?')) {
+                    document.getElementById('frmDelete').submit();
+                } else { }
+            }
+        </script>
+    </form>
+</div>
+</div>

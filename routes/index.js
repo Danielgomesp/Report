@@ -1,13 +1,16 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router(); 
+const { ensureAuthenticated } = require('../config/auth');
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-  require('../db').findReport(function (docs) {
-    res.render('index', { title: 'Report System', report: docs });  //objeto report recebe os dados de docs. Objeto title recebe titulo 
+// Welcome Page
+router.get('/', (req, res) => res.render('welcome', {title: 'Report System'}));
+
+// Dashboard
+router.get('/dashboard', ensureAuthenticated, (req, res) =>
+require('../db').findReport(function (docs) {
+    res.render('index', { title: 'Report System', user: req.user, report: docs }); 
   })
-
-});
+);
 
 /* GET new page. */
 router.get('/new', function (req, res, next) {
@@ -29,7 +32,7 @@ router.post('/complete/delete', function (req, res, next) {
   let id = req.body.id;
   require('../db').deleteReport(id,
     function () {
-      res.redirect('/');
+      res.redirect('/dashboard');
     });
 });
 
@@ -39,7 +42,7 @@ router.post('/complete/update', function (req, res, next) {
   let newReport = req.body.newReport;
   require('../db').updateReport(id, newReport,
     function () {
-      res.redirect('/');
+      res.redirect('/dashboard');
     });
 });
 
@@ -52,7 +55,7 @@ router.post('/new', function (req, res, next) {
   var report = req.body.report;
   require("../db").saveReport(operatorName, shift, date, report,
     function () {
-      res.redirect('/');
+      res.redirect('/dashboard');
     })
 });
 
