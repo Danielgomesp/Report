@@ -8,7 +8,7 @@ router.get('/', (req, res) => res.render('welcome', {title: 'Report System'}));
 router.get('/dashboard', ensureAuthenticated, (req, res) =>
 require('../db').findReport(function (docs) {
     res.render('index', { title: 'Report System', report: docs }); 
-    user: req.user
+    user: req.user;
   })
 );
 
