@@ -1,8 +1,9 @@
 //CONNECTION
 let selectCollection = 'report';
+dbPassword = 'mongodb://danielgomesp:daniel32768600@kamino.mongodb.umbler.com:36898/reportsystemdb';
 
 var mongoClient = require("mongodb").MongoClient;
-mongoClient.connect("mongodb://danielgomesp:daniel32768600@kamino.mongodb.umbler.com:36898/reportsystemdb",
+mongoClient.connect(dbPassword,
     function (err, conn) {
         if (err) return console.log(err);
         global.db = conn.db('reportsystemdb');
@@ -53,4 +54,4 @@ function updateReport(id, newReport, callback) {
     })
 }
 
-module.exports = { saveReport, findReport, deleteReport, updateReport, searchReport }
+module.exports = { mongoURI: dbPassword, saveReport, findReport, deleteReport, updateReport, searchReport }
