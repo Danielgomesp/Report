@@ -1,5 +1,6 @@
-//CONNECTION
-let selectCollection = 'report';
+// Load User model
+const selectCollection = "report";
+
 dbPassword = 'mongodb://danielgomesp:daniel32768600@kamino.mongodb.umbler.com:36898/reportsystemdb';
 
 var mongoClient = require("mongodb").MongoClient;

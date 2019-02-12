@@ -1,5 +1,6 @@
 const express = require('express');
-const router = express.Router(); const { ensureAuthenticated } = require('../config/auth');
+const router = express.Router(); 
+const { ensureAuthenticated } = require('../config/auth');
 
 // Welcome Page
 router.get('/', (req, res) => res.render('welcome', {title: 'Report System'}));
@@ -7,8 +8,7 @@ router.get('/', (req, res) => res.render('welcome', {title: 'Report System'}));
 // Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) =>
 require('../db').findReport(function (docs) {
-    res.render('index', { title: 'Report System', report: docs }); 
-    user: req.user;
+    res.render('index', { title: 'Report System', user: req.user, report: docs }); 
   })
 );
 

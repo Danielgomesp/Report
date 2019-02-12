@@ -72,8 +72,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// Routes
+app.use('/', require('./routes/index.js'));
+app.use('/users', require('./routes/users.js'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -90,5 +91,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+ const PORT = process.env.PORT || 5000;
+ app.listen(PORT, console.log(`Server started on port ${PORT}`));
 
 module.exports = app;
