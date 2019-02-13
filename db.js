@@ -1,5 +1,5 @@
 // Load User model
-const selectCollection = "report";
+const selectCollection = "reportsystemdb";
 
 dbPassword = 'mongodb://danielgomesp:daniel32768600@kamino.mongodb.umbler.com:36898/reportsystemdb';
 
